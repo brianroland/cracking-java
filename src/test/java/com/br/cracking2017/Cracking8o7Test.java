@@ -13,7 +13,7 @@ public class Cracking8o7Test {
         System.out.print("test0: beg\n");
         System.out.print("test0: end\n");
     }
-    
+
     @Test
     public void test1() {
         System.out.print("test1: beg\n");
@@ -26,5 +26,19 @@ public class Cracking8o7Test {
         problem.solve();
 
         System.out.print("test1: end\n");
+    }
+
+    @Test
+    public void test2() {
+        System.out.print("test2: beg\n");
+
+        char[] input = new char[] {'a', 'b', 'c', 'd'};
+        int nInput = 4;
+
+        Cracking8o7 problem = new Cracking8o7(input, nInput);
+
+        problem.solve();
+
+        System.out.print("test2: end\n");
     }
 }
