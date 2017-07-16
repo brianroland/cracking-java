@@ -39,7 +39,6 @@ public class Cracking8o8 {
 
         //Begin creating tree
         createStates(positionToFill, selected, out);
-
     }
 
     private void createStates(int positionToFill, int[] selected, char[] out) {

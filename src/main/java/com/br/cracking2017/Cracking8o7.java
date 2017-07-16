@@ -63,7 +63,6 @@ public class Cracking8o7 {
         }
     }
 
-
     private void printArray(char[] x, int n) {
         for (int i=0; i<n; i++) {
             System.out.print(x[i]);

@@ -20,7 +20,6 @@ public class Cracking1o5 {
     int nL;
     int nS;
 
-
     public Cracking1o5(char[] query_, int nQuery_, char[] target_, int nTarget_) {
 
         query = query_;
@@ -58,7 +57,6 @@ public class Cracking1o5 {
         }
         System.out.print("\n");
 
-
         System.out.print("longer:\n");
         for (int iL=0; iL < nL; ++iL) {
             System.out.print(longer[iL]);
@@ -72,23 +70,18 @@ public class Cracking1o5 {
         System.out.print("\n");
     }
 
-
-
     private boolean isStateTerminalGivenNotSolution(int state_iL, int state_iS, int state_nDelete, int state_nReplace) {
 
         boolean cannotDoCompare = ((state_iS >= nS) | (state_iL >= nL));
         boolean tooManyEdits = (state_nDelete + state_nReplace) > 1;
 
         return tooManyEdits | cannotDoCompare;
-
     }
-
 
     private boolean doesStateSolveProblem(int state_iL, int state_iS, int state_nDelete, int state_nReplace) {
 
         return (state_iL==nL & state_iS==nS) & ((state_nDelete + state_nReplace) <= 1);
     }
-
 
     private boolean createNewStates(int state_iL, int state_iS, int state_nDelete, int state_nReplace) {
 
@@ -107,15 +100,10 @@ public class Cracking1o5 {
 
         } else {
 
-
             boolean outReplace = createNewStates(state_iL+1, state_iS+1, state_nDelete, state_nReplace+1);
             boolean outDelete = createNewStates(state_iL+1, state_iS, state_nDelete+1, state_nReplace);
-
-
             return outReplace | outDelete;
-
         }
-
     }
 
     public boolean solve() {
@@ -130,6 +118,4 @@ public class Cracking1o5 {
 
         return out;
     }
-
-
 }

@@ -22,7 +22,6 @@ public class Cracking8o11 {
         currency = currency_;
         nCurrency = nCurrency_;
         intermediateDB = new HashSet<String>();
-
         nWays=0;
     }
 
@@ -45,7 +44,6 @@ public class Cracking8o11 {
         createStates(root);
         return nWays;
     }
-
 
     private void createStates(int[] intermediate) {
 

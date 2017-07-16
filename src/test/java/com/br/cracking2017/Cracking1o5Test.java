@@ -48,7 +48,6 @@ public class Cracking1o5Test {
         boolean solution = problem.solve();
 
         System.out.print(String.format("solution=%b\n", solution));
-
         assertEquals(solution, true);
 
         System.out.print("test2, solve single replacement case: end\n");
@@ -68,7 +67,6 @@ public class Cracking1o5Test {
         boolean solution = problem.solve();
 
         System.out.print(String.format("solution=%b\n", solution));
-
         assertEquals(solution, true);
 
         System.out.print("test3, solve single deletion case: end\n");
@@ -89,7 +87,6 @@ public class Cracking1o5Test {
         boolean solution = problem.solve();
 
         System.out.print(String.format("solution=%b\n", solution));
-
         assertEquals(solution, false);
 
         System.out.print("test4, solve double deletion case: end\n");
@@ -110,7 +107,6 @@ public class Cracking1o5Test {
         boolean solution = problem.solve();
 
         System.out.print(String.format("solution=%b\n", solution));
-
         assertEquals(solution, false);
 
         System.out.print("test5, solve double deletion case: end\n");

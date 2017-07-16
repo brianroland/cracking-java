@@ -25,13 +25,10 @@ public class Cracking8o11Test {
         int[] currency = new int[] {25, 10, 5, 1};
         int nCurrency = 4;
 
-
         int[] x = new int[] {0,1,2,3};
 
         Cracking8o11 problem = new Cracking8o11(n, currency, nCurrency);
-
         String y = problem.keyFromArray(x);
-
         System.out.println(y);
 
         System.out.println("test1, test keyFromArray(): end");
@@ -47,7 +44,6 @@ public class Cracking8o11Test {
 
         Cracking8o11 problem = new Cracking8o11(n, currency, nCurrency);
         int nWays = problem.solve();
-
         System.out.println(String.format("nWays=%d", nWays));
 
         System.out.println("test2: end");
@@ -63,9 +59,7 @@ public class Cracking8o11Test {
 
         Cracking8o11 problem = new Cracking8o11(n, currency, nCurrency);
         int nWays = problem.solve();
-
         System.out.println(String.format("nWays=%d", nWays));
-
         assertEquals(nWays,4);
 
         System.out.println("test3: end");
