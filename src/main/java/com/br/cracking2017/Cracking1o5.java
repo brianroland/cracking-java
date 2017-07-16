@@ -74,44 +74,42 @@ public class Cracking1o5 {
 
 
 
-    private boolean isStateTerminal(int state_iL, int state_iS, int state_jS, int state_nDelete, int state_nReplace) {
+    private boolean isStateTerminalGivenNotSolution(int state_iL, int state_iS, int state_nDelete, int state_nReplace) {
 
-        return ((state_nDelete + state_nReplace) > 1) | ((state_iS > nS) | (state_iL > nL));
+        boolean cannotDoCompare = ((state_iS >= nS) | (state_iL >= nL));
+        boolean tooManyEdits = (state_nDelete + state_nReplace) > 1;
+
+        return tooManyEdits | cannotDoCompare;
 
     }
 
 
-    private boolean doesStateSolveProblem(int state_iL, int state_iS, int state_jS, int state_nDelete, int state_nReplace) {
+    private boolean doesStateSolveProblem(int state_iL, int state_iS, int state_nDelete, int state_nReplace) {
 
         return (state_iL==nL & state_iS==nS) & ((state_nDelete + state_nReplace) <= 1);
     }
 
 
-    private boolean createNewStates(int state_iL, int state_iS, int state_jS, int state_nDelete, int state_nReplace) {
+    private boolean createNewStates(int state_iL, int state_iS, int state_nDelete, int state_nReplace) {
 
-
-
-
-        if (doesStateSolveProblem(state_iL, state_iS, state_jS, state_nDelete, state_nReplace)) {
+        if (doesStateSolveProblem(state_iL, state_iS, state_nDelete, state_nReplace)) {
             return true;
         }
 
-
-        if (isStateTerminal(state_iL, state_iS, state_jS, state_nDelete, state_nReplace)) {
+        if (isStateTerminalGivenNotSolution(state_iL, state_iS, state_nDelete, state_nReplace)) {
             return false;
         }
-
 
         //check equality of characters
         if (shorter[state_iS] == longer[state_iL]) {
 
-            return createNewStates(state_iL+1, state_iS+1, state_jS, state_nDelete, state_nReplace);
+            return createNewStates(state_iL+1, state_iS+1, state_nDelete, state_nReplace);
 
         } else {
 
 
-            boolean outReplace = createNewStates(state_iL+1, state_iS+1, state_jS, state_nDelete, state_nReplace+1);
-            boolean outDelete = createNewStates(state_iL+1, state_iS, state_jS, state_nDelete+1, state_nReplace);
+            boolean outReplace = createNewStates(state_iL+1, state_iS+1, state_nDelete, state_nReplace+1);
+            boolean outDelete = createNewStates(state_iL+1, state_iS, state_nDelete+1, state_nReplace);
 
 
             return outReplace | outDelete;
@@ -125,11 +123,10 @@ public class Cracking1o5 {
         //storage on the stack
         int state_iL = 0;
         int state_iS = 0;
-        int state_jS = 0;
         int state_nDelete = 0;
         int state_nReplace = 0;
 
-        boolean out = createNewStates(state_iL, state_iS, state_jS, state_nDelete, state_nReplace);
+        boolean out = createNewStates(state_iL, state_iS, state_nDelete, state_nReplace);
 
         return out;
     }

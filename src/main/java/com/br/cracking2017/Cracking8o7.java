@@ -10,7 +10,6 @@ package main.java.com.br.cracking2017;
  */
 public class Cracking8o7 {
 
-
     char[] input;
     int nInput;
 
@@ -18,7 +17,6 @@ public class Cracking8o7 {
         input = input_;
         nInput = nInput_;
     }
-
 
     public void solve() {
 

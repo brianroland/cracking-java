@@ -5,6 +5,12 @@ import java.util.Iterator;
 
 /**
  * Created by brianroland on 7/15/17.
+ *
+ * Enumerate all intermediate solutions, but check against a DB of intermediate solutions.
+ *
+ *
+ *
+ *
  */
 public class Cracking8o8 {
 
@@ -33,17 +39,6 @@ public class Cracking8o8 {
 
         //Begin creating tree
         createStates(positionToFill, selected, out);
-
-        Iterator iter = intermediateDB.iterator();
-
-        //System.out.println("%s", iter.next());
-        //while (iter.hasNext()) {
-        //
-        //    System.out.println(iter);
-        //    System
-        //    System.out.print("\n");
-        //}
-
 
     }
 
@@ -87,14 +82,12 @@ public class Cracking8o8 {
         }
     }
 
-
     private void printArray(char[] x, int n) {
         for (int i=0; i<n; i++) {
             System.out.print(x[i]);
         }
         System.out.print('\n');
     }
-
 
     public int countPermutations() {
         return countPermutations;

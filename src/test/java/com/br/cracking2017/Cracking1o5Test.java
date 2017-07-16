@@ -90,9 +90,30 @@ public class Cracking1o5Test {
 
         System.out.print(String.format("solution=%b\n", solution));
 
-        assertEquals(solution, true);
+        assertEquals(solution, false);
 
         System.out.print("test4, solve double deletion case: end\n");
+    }
+
+
+    @Test
+    public void test5() {
+        System.out.print("test5, solve double replacement case: beg\n");
+
+        char[] query = new char[]  {'p', 'a', 'l', 'e'};
+        char[] target = new char[] {'b', 'i', 'l', 'e'};
+
+        int nQuery = query.length;
+        int nTarget = target.length;
+
+        Cracking1o5 problem = new Cracking1o5(query, nQuery, target, nTarget);
+        boolean solution = problem.solve();
+
+        System.out.print(String.format("solution=%b\n", solution));
+
+        assertEquals(solution, false);
+
+        System.out.print("test5, solve double deletion case: end\n");
     }
 
 
