@@ -91,13 +91,12 @@ public class Cracking16o19 {
                     }
                 }
             }
-
             clusterSizes.add(clusterSize);
         }
 
         System.out.println(clusterSizes);
     }
-    
+
     private String makeId(int iRow, int iCol){
         return String.format("%d,%d", iRow, iCol);
     }
@@ -105,31 +104,25 @@ public class Cracking16o19 {
     private String makeIdLeft(String id) {
         Integer iRow = new Integer(id.split(",")[0]);
         Integer iCol = new Integer(id.split(",")[1]);
-
         return String.format("%d,%d",iRow-1,iCol);
     }
 
     private String makeIdUp(String id) {
         Integer iRow = new Integer(id.split(",")[0]);
         Integer iCol = new Integer(id.split(",")[1]);
-
         return String.format("%d,%d",iRow,iCol-1);
     }
 
     private String makeIdLeftUp(String id) {
         Integer iRow = new Integer(id.split(",")[0]);
         Integer iCol = new Integer(id.split(",")[1]);
-
         return String.format("%d,%d",iRow-1,iCol-1);
     }
 
     private String makeIdLeftDown(String id) {
         Integer iRow = new Integer(id.split(",")[0]);
         Integer iCol = new Integer(id.split(",")[1]);
-
         return String.format("%d,%d",iRow-1,iCol+1);
     }
-
-
 
 }
