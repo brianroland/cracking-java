@@ -18,7 +18,6 @@ public class Cracking16o17 {
         int value = a[left];
         int running_sum = 0;
 
-
         for (int i=1; i<m;++i) {
 
             int x = a[i];
@@ -52,8 +51,6 @@ public class Cracking16o17 {
                 }
             }
         }
-
-
 
         return value;
     }
