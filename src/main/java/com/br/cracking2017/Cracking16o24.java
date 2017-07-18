@@ -6,6 +6,10 @@ import java.util.Iterator;
 /**
  * Created by brianroland on 7/17/17.
  *
+ *
+ *
+ * WIP
+ *
  * Does this handle a[i] = comple[i]
  * Does this handle 2 occurances of same value having 1 or 2 complements in the input?
  *
