@@ -6,9 +6,7 @@ import java.util.Iterator;
 /**
  * Created by brianroland on 7/17/17.
  *
- *
- *
- * WIP
+ * finished linear time algo
  *
  * Does this handle a[i] = comple[i]
  * Does this handle 2 occurances of same value having 1 or 2 complements in the input?
@@ -18,41 +16,55 @@ public class Cracking16o24 {
 
     public static void solve(int[] a, int m, int value) {
 
-        int[] complements = new int[m];
-        HashMap<Integer, Integer> count = new HashMap<Integer, Integer>();
-        for (int i = 0; i < m; ++i) {
-
-            if (count.containsKey(a[i])) {
-                Integer currentValue = count.get(a[i]);
-                currentValue += 1;
-                count.replace(a[i], currentValue);
+        // Count each unique key in the input
+        HashMap<Integer, Integer> inputCount = new HashMap<Integer, Integer>();
+        for (int i=0; i<m; ++i) {
+            if (inputCount.containsKey(a[i])) {
+                inputCount.replace(a[i],1+inputCount.get(a[i]));
             } else {
-                count.put(a[i], 1);
+                inputCount.put(a[i], 1);
             }
-            complements[i] = value - a[i];
         }
 
-        System.out.println("check hashmap interface");
-        for (Integer key : count.keySet()) {
-            System.out.println(String.format("key %d has count %d", key, count.get(key)));
-        }
+        // Make complement array
+        int[] c = new int[m];
+        for (int i=0; i<m; ++i) { c[i] = value - a[i]; }
 
-        for (int i = 0; i < m; ++i) {
+        // Check each element and the complment
+        for (int i=0; i<m; ++i) {
 
-            if (a[i] != complements[i] & count.containsKey(complements[i])) {
+            if (a[i]!=c[i] & inputCount.containsKey(a[i]) & inputCount.containsKey(c[i])) {
 
-                System.out.println(String.format("%d, %d", a[i], complements[i]));
-                count.remove(a[i]);
+                System.out.println(String.format("%d,%d", a[i], c[i]));
 
-            } else if (a[i] == complements[i] & count.containsKey(a[i]) ) {
+                inputCount.replace(a[i], -1 + inputCount.get(a[i]) );
+                inputCount.replace(c[i], -1 + inputCount.get(c[i]) );
 
-                if (count.get(a[i]) > 1 ) {
-
-                    System.out.println(String.format("%d, %d", a[i], complements[i]));
-                    count.remove(a[i]);
+                if (inputCount.get(a[i])==0) {
+                    inputCount.remove(a[i]);
                 }
+
+                if (inputCount.get(c[i])==0) {
+                    inputCount.remove(c[i]);
+                }
+
+            } else if (a[i]==c[i] & inputCount.containsKey(a[i])) {
+                if (inputCount.get(a[i]) >= 2) {
+
+                    System.out.println(String.format("%d,%d", a[i], c[i]));
+                    inputCount.replace(a[i], -2 + inputCount.get(a[i]));
+
+                    if (inputCount.get(c[i]) == 0) {
+                        inputCount.remove(c[i]);
+                    }
+                }
+
             }
 
+
         }
+
+
+
     }
 }
